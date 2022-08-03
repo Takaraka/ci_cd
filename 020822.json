@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "2d37c782-4c2d-4f00-89b7-8b4dc8ff7b6b",
+		"name": "Vikunja2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20489575"
+	},
+	"item": [
+		{
+			"name": "post /login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"",
+							"//получаем токен из боди",
+							"    const response = JSON.parse(responseBody);",
+							"   // вывод в консоль для проверки",
+							"   // console.log(response.token);",
+							"",
+							"// кладем токен в глобальную переменную",
+							"pm.globals.set('tokenVikunja', response.token);   ",
+							"",
+							"// еще вариант выцепления токена",
+							"const response1=pm.response.json();",
+							"pm.globals.set('tokenVikunja2', response1.token);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Fausto_Emmerich77\",\n    \"password\": \"password1\",\n    \"long_token\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://try.vikunja.io/api/v1/login",
+					"protocol": "https",
+					"host": [
+						"try",
+						"vikunja",
+						"io"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post /register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"{{$randomUserName}}\",\n     \"email\": \"{{$randomEmail}}\",\n    \"password\": \"password1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://try.vikunja.io/api/v1/register",
+					"protocol": "https",
+					"host": [
+						"try",
+						"vikunja",
+						"io"
+					],
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
