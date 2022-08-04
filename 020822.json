@@ -40,7 +40,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"Fausto_Emmerich77\",\n    \"password\": \"password1\",\n    \"long_token\": false\n}",
+					"raw": "{\n    \"username\": \"Ezra66\",\n    \"password\": \"password1\",\n    \"long_token\": false\n}",
 					"options": {
 						"raw": {
 							"language": "json"
